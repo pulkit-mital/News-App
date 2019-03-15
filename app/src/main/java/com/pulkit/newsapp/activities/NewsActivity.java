@@ -1,11 +1,13 @@
 package com.pulkit.newsapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.pulkit.newsapp.R;
 import com.pulkit.newsapp.adapters.NewsArticleRecyclerAdapter;
 import com.pulkit.newsapp.databinding.ActivityNewsBinding;
+import com.pulkit.newsapp.listener.ClickListener;
 import com.pulkit.newsapp.model.NewsArticle;
 import com.pulkit.newsapp.utils.NetworkUtil;
 import com.pulkit.newsapp.viewmodel.NewsViewModel;
@@ -22,7 +24,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import dagger.android.AndroidInjection;
 
-public class NewsActivity extends AppCompatActivity {
+import static com.pulkit.newsapp.utils.Constants.EXTRA_TITLE;
+import static com.pulkit.newsapp.utils.Constants.EXTRA_URL;
+
+public class NewsActivity extends AppCompatActivity implements ClickListener {
 
     ActivityNewsBinding activityNewsBinding;
 
@@ -109,5 +114,13 @@ public class NewsActivity extends AppCompatActivity {
             newsViewModel.getErrorMessage().removeObservers(this);
             newsViewModel.getIsProgressVisible().removeObservers(this);
         }
+    }
+
+    @Override
+    public void launchNewsDetailActivity(String url, String title) {
+        Intent intent = new Intent(this, NewsDetailActivity.class);
+        intent.putExtra(EXTRA_URL, url);
+        intent.putExtra(EXTRA_TITLE, title);
+        startActivity(intent);
     }
 }

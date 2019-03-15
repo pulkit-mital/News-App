@@ -9,5 +9,7 @@ public class Constants {
     public final static String API_KEY = "b8066120f6cd4272bfa8b481bbc8965c";
     public final static String COUNTRY = "us";
     public final static String DATABASE_NAME = "NewsDatabase.db";
+    public final static String EXTRA_URL = "EXTRA_URL";
+    public final static String EXTRA_TITLE = "EXTRA_TITLE";
 
 }
