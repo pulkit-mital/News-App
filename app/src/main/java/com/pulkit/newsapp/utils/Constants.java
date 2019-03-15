@@ -8,6 +8,6 @@ public class Constants {
     public static final long CONNECT_TIMEOUT = 30000;
     public final static String API_KEY = "b8066120f6cd4272bfa8b481bbc8965c";
     public final static String COUNTRY = "us";
-
+    public final static String DATABASE_NAME = "NewsDatabase.db";
 
 }
