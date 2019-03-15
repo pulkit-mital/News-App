@@ -5,6 +5,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.pulkit.newsapp.R;
@@ -42,5 +43,15 @@ public class BindingUtils {
             authorText.setSpan(new StyleSpan(Typeface.BOLD), 0, textView.getContext().getResources().getString(R.string.publish_title).length() - 1, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             textView.setText(authorText);
         }
+    }
+
+    @BindingAdapter({"webUrl","webViewClient"})
+    public static void loadWebPage(WebView webView, String url, CustomWebViewClient customWebViewClient) {
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setLoadsImagesAutomatically(true);
+        webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        webView.setWebViewClient(customWebViewClient);
+        webView.loadUrl(url);
+
     }
 }
