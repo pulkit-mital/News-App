@@ -3,6 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="newsArticleRecyclerAdapter"
+            type="com.pulkit.newsapp.adapters.NewsArticleRecyclerAdapter" />
 
         <variable
             name="newsViewModel"
@@ -26,6 +29,7 @@
                 android:id="@+id/news_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:adapter="@{newsArticleRecyclerAdapter}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         </LinearLayout>

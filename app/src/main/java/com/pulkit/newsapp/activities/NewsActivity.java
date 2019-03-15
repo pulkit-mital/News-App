@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.pulkit.newsapp.R;
+import com.pulkit.newsapp.adapters.NewsArticleRecyclerAdapter;
 import com.pulkit.newsapp.databinding.ActivityNewsBinding;
 import com.pulkit.newsapp.model.NewsArticle;
 import com.pulkit.newsapp.utils.NetworkUtil;
@@ -27,6 +28,9 @@ public class NewsActivity extends AppCompatActivity {
 
     @Inject
     NewsViewModelFactory newsViewModelFactory;
+
+    @Inject
+    NewsArticleRecyclerAdapter newsArticleRecyclerAdapter;
 
     NewsViewModel newsViewModel;
 
@@ -52,6 +56,7 @@ public class NewsActivity extends AppCompatActivity {
 
     private void initializeView() {
         activityNewsBinding.setNewsViewModel(newsViewModel);
+        activityNewsBinding.setNewsArticleRecyclerAdapter(newsArticleRecyclerAdapter);
     }
 
     @Override
@@ -64,12 +69,16 @@ public class NewsActivity extends AppCompatActivity {
         newsViewModel.getNewsArticles().observe(this, new Observer<List<NewsArticle>>() {
             @Override
             public void onChanged(List<NewsArticle> newsArticles) {
+                newsArticleRecyclerAdapter.setNewsArticles(newsArticles);
+
             }
         });
 
         newsViewModel.getArticles().observe(this, new Observer<List<NewsArticle>>() {
             @Override
             public void onChanged(List<NewsArticle> newsArticles) {
+                newsArticleRecyclerAdapter.setNewsArticles(newsArticles);
+
             }
         });
 

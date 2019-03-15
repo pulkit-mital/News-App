@@ -32,6 +32,7 @@ public class NewsViewModel extends ViewModel {
     @Inject
     public NewsViewModel(NewsRepository newsRepository) {
         this.newsRepository = newsRepository;
+        getNews();
     }
 
     public void getNews() {
