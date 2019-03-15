@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="newsViewModel"
+            type="com.pulkit.newsapp.viewmodel.NewsViewModel" />
     </data>
 
     <RelativeLayout
@@ -31,7 +34,8 @@
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true" />
+            android:layout_centerInParent="true"
+            android:visibility='@{newsViewModel.isProgressVisible, default="gone"}' />
     </RelativeLayout>
 
 </layout>
