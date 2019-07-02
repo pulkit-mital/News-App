@@ -26,14 +26,12 @@ import static com.pulkit.newsapp.utils.NetworkUtil.isNetworkConnected;
  * The class will provide access to web service to fetch data from network
  * as well as room database to get data when network connection is not there
  */
-@Singleton
 public class NewsRepository {
 
     private NewsArticleDao newsArticleDao;
     private NewsService newsService;
     private NewsApplication newsApplication;
 
-    @Inject
     public NewsRepository(NewsArticleDao newsArticleDao, NewsService newsService, NewsApplication newsApplication) {
         this.newsArticleDao = newsArticleDao;
         this.newsService = newsService;

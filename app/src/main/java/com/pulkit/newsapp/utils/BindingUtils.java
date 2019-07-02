@@ -9,10 +9,17 @@ import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.pulkit.newsapp.R;
+import com.pulkit.newsapp.adapters.NewsArticleRecyclerAdapter;
+import com.pulkit.newsapp.model.News;
+import com.pulkit.newsapp.model.NewsArticle;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.databinding.BindingAdapter;
+import androidx.lifecycle.MutableLiveData;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class BindingUtils {
 
@@ -53,5 +60,11 @@ public class BindingUtils {
         webView.setWebViewClient(customWebViewClient);
         webView.loadUrl(url);
 
+    }
+
+    @BindingAdapter({"adapter", "items"})
+    public static void loadRecyclerView(RecyclerView recyclerView, NewsArticleRecyclerAdapter newsArticleRecyclerAdapter, MutableLiveData<List<NewsArticle>> newsMutableLiveData){
+        recyclerView.setAdapter(newsArticleRecyclerAdapter);
+        newsArticleRecyclerAdapter.setNewsArticles(newsMutableLiveData.getValue());
     }
 }
